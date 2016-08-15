@@ -1,37 +1,36 @@
-.coub_kpd div:nth-child(2)  {
-	transform-origin: 0 0; 
-	transform: rotate3d(-1, 0, 0, 90deg);
+.coub_kpd div:nth-child(2) {
+    transform-origin: 0 0; 
+    transform: rotate3d(-1, 0, 0, 90deg);
 }
 
-.coub_kpd div:nth-child(3)  {
-	transform-origin: 100% 100%; 
-	transform: rotate3d(1, 0, 0, 90deg);
+.coub_kpd div:nth-child(3) {
+    transform-origin: 100% 100%; 
+    transform: rotate3d(1, 0, 0, 90deg);
 }
 
-.coub_kpd div:nth-child(4)  {
-	transform-origin: 100% 100%;
-	transform: rotate3d(0, -1, 0, 90deg);
+.coub_kpd div:nth-child(4) {
+    transform-origin: 100% 100%;
+    transform: rotate3d(0, -1, 0, 90deg);
 }
 
-.coub_kpd div:nth-child(5)  {
-	transform-origin: 0 100%;
-	transform: rotate3d(0, 1, 0, 90deg); 
+.coub_kpd div:nth-child(5) {
+    transform-origin: 0 100%;
+    transform: rotate3d(0, 1, 0, 90deg); 
 }
 
-.coub_kpd div:nth-child(6)  {
-	transform-origin: 50% 50%;
-	transform: rotate3d(0, 90, 0, 180deg);
+.coub_kpd div:nth-child(6) {
+    transform-origin: 50% 50%;
+    transform: rotate3d(0, 90, 0, 180deg);
 }
 
 .coub_kpd div {
-	position:absolute;
+    position:absolute;
 }
 
 .coub_kpd {
-	transform-style: preserve-3d;
-	transform: perspective(900px);
-	position: relative;
-	left: 100px;
-	top: 100px;	
-
+    transform-style: preserve-3d;
+    transform: perspective(900px);
+    position: relative;
+    left: 100px;
+    top: 100px;    
 }
