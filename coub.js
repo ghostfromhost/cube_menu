@@ -8,11 +8,13 @@
         var info_cube_final = $.extend({
             size:100,
             animation:'ease-out',
-            animation_duration:1
+            animation_duration:1,
+            handler_for_roll:'mouseover'
         },info_cube);
 
         var size = info_cube_final.size;
         var animation = info_cube_final.animation;
+        var handler_for_roll = info_cube_final.handler_for_roll;
         var animation_duration = info_cube_final.animation_duration;
         var face_cube = this.children('div');
         face_cube.css('width',size + 'px').css('height',size + 'px');
@@ -36,9 +38,32 @@
             {x:0,y:1,z:0,deg:180}
         ];
         var coub_object = this;
-        menu.children().on('mouseover',function(){
-            var data_rot = data_coub[$(this).index()];
-            coub_object.transition({transform:'perspective(900px) rotate3d(' + data_rot.x + ','+ data_rot.y + ',' + data_rot.z + ',' + data_rot.deg + 'deg)'},1000,'ease');
+        var binary = false;
+        var timer;
+        var menu_index;
+        if (handler_for_roll) {
+        menu.children().on(handler_for_roll,function(){
+            if (!binary) {
+                binary = true;
+                timer = new Date;
+                var data_rot = data_coub[$(this).index()];            
+                coub_object.transition({transform:'perspective(900px) rotate3d(' + data_rot.x + ','+ data_rot.y + ',' + data_rot.z + ',' + data_rot.deg + 'deg)'},animation_duration*1000,animation);        
+                setTimeout(function(){binary = false;},animation_duration*1000);
+            } else {
+                var delta = new Date - timer;
+                menu_index = $(this).index();
+                var current_menu_index = $(this).index();
+                setTimeout(function(){
+                    if (current_menu_index == menu_index) {
+                        binary = true;
+                        timer = new Date;
+                        var data_rot = data_coub[current_menu_index];            
+                        coub_object.transition({transform:'perspective(900px) rotate3d(' + data_rot.x + ','+ data_rot.y + ',' + data_rot.z + ',' + data_rot.deg + 'deg)'},animation_duration*1000,animation);    
+                        setTimeout(function(){binary = false;},animation_duration*1000);        
+                    } 
+                },delta);
+            }
         });
-        }  
+        }
+    }  
 })(jQuery)
